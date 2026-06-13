@@ -1,0 +1,64 @@
+.env
+__pycache__
+.venv
+.DS_Store
+
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+*.env
+
+# API keys / credential files
+*service-account*.json
+*credentials*.json
+*key*.json
+application_default_credentials.json
+
+# Google Cloud local config
+.gcloud/
+config/
+
+# Claude / MCP local config
+.claude/
+.mcp.json
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# Build/package output
+build/
+dist/
+*.egg-info/
+
+# Data files - optional, remove if you want to commit data
+data/
+*.csv
+*.parquet
+*.xlsx
+
+# Temporary files
+tmp/
+temp/
+*.tmp
