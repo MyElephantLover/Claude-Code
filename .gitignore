@@ -62,3 +62,5 @@ data/
 tmp/
 temp/
 *.tmp
+
+.ipynb
