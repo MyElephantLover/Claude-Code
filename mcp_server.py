@@ -1,3 +1,5 @@
+from pydoc import doc
+
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("DocumentMCP", log_level="ERROR")
@@ -32,9 +34,43 @@ def edit_doc(doc_id: str, new_content: str) -> str:
     return "Document not found"
 
 # TODO: Write a resource to return all doc id's
+@mcp.resource(
+        name="list_docs",
+        description="List all available document IDs."
+)
+def list_docs() -> list:
+    return list(docs.keys())
+
 # TODO: Write a resource to return the contents of a particular doc
-# TODO: Write a prompt to rewrite a doc in markdown format
-# TODO: Write a prompt to summarize a doc
+@mcp.resource(
+        url="docs://documents",
+        mimetype="application/json",
+        name="get_doc",
+        description="Get the contents of a document by its ID."
+)
+def get_doc(doc_id: str) -> str:
+    return docs.get(doc_id, "Document not found")
+
+@mcp.prompt(
+        name="rewrite_doc",
+        description="Rewrite a document in markdown format."
+)
+def rewrite_doc(doc_id: str) -> str:
+    doc = docs.get(doc_id, "Document not found")
+    if doc == "Document not found":
+        return doc
+    # Here you might want to implement the actual rewriting logic
+    prompt = f"Rewrite the following document in markdown format:\n\n{doc}"
+    # Here you might want to call an LLM to perform the rewriting
+    return doc
+
+@mcp.prompt(
+        name="summarize_doc",
+        description="Summarize the contents of a document."
+)
+
+def summarize_doc(doc_id: str) -> str:
+    return docs.get(doc_id, "Document not found")
 
 
 if __name__ == "__main__":
